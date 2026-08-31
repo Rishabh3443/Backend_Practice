@@ -10,21 +10,17 @@ app.use(express.json())
 
 DbConnect()
 
-// app.use("/notes",NotesRoutes);
+app.use("/notes",NotesRoutes);
 
-app.post("/create",upload.single("file"),(req,res) =>{
+// app.post("/create",upload.single("file"),(req,res) =>{
   let file = req.file
   res.send({
     message : "okk",
     data: file
   });
 
-  console.log(file);
-  
-  
-
-  
-})
+  console.log(file); 
+// })
 
 
 

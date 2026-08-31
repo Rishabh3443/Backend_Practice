@@ -16,10 +16,7 @@ const App = () => {
   }
 
   const handleimage = (e) => {
-
-
     setFormData({ ...Formdata, image: e.target.files[0] })
-
   }
 
 
