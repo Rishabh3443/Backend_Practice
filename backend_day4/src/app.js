@@ -12,7 +12,7 @@ DbConnect()
 
 app.use("/notes",NotesRoutes);
 
-// app.post("/create",upload.single("file"),(req,res) =>{
+ app.post("/create",upload.single("file"),(req,res) =>{
   let file = req.file
   res.send({
     message : "okk",
@@ -20,7 +20,7 @@ app.use("/notes",NotesRoutes);
   });
 
   console.log(file); 
-// })
+ })
 
 
 
