@@ -12,6 +12,7 @@ DbConnect()
 
 app.use("/notes",NotesRoutes);
 
+
  app.post("/create",upload.single("file"),(req,res) =>{
   let file = req.file
   res.send({
@@ -21,6 +22,8 @@ app.use("/notes",NotesRoutes);
 
   console.log(file); 
  })
+
+ 
 
 
 

@@ -1,10 +1,16 @@
 const notesModel = require("../models/notes.model")
 
-const createNotesController = async(req,res)=>{
-  let {title,description} = req.body;
-  let data = await notesModel.create({
-    title,
-    description,
-  })
+// const createNotesController = async(req,res)=>{
 
-};
+//   let {title,description} = req.body;
+//   let data = await notesModel.create({
+//     title,
+//     description,
+//   })
+
+// };
+
+
+const createPostController = async (req,res)=>{};
+
+module .exports = createPostController

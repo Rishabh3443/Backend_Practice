@@ -1,13 +1,12 @@
 const { default: mongoose } = require("mongoose");
 
 const notesSchema = mongoose.Schema({
-    title:{
+    Caption:{
         type:String,
         required:true
     },
-    description:{
+    image:{
         type:String,
-        minlength:10,
         required:true,
     }
 }
