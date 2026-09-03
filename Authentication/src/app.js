@@ -4,6 +4,7 @@ import authModel from "./model/auth.Schema.js";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import  {Authentication}  from "./middleware/middleware.js";
+import bcrypt from 'bcrypt'
 
 const app = express();
 await dbConnect();
@@ -14,7 +15,7 @@ app.use(express.json());
 app.post("/api/auth/register", async (req,res)=>{
    const {email,name,password} = req.body;
 
-   const user = await authModel.create({email,name, password})
+   const user = await authModel.create({email,name, password: await bcrypt.hash(password,10) })
 
    
 
@@ -47,7 +48,18 @@ app.post("/api/auth/login", async (req, res)=>{
 
     const {email,password} = req.body;
 
-    const user = await authModel.findOne({email});
+     const user = await authModel.findOne({email});
+
+    const isvalidtoken = await bcrypt.compare(password,user.password);
+
+    if(!isvalidtoken){
+        return res.status(401).json({
+            message:"invalid password",
+        })
+    }
+
+   
+
 
     const token = jwt.sign({
         id: user._id
